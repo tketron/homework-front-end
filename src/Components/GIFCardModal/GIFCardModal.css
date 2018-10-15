@@ -1,4 +1,5 @@
 .GIFCardModal {
+  z-index: 10;
   height: 100%;
   width: 100%;
   position: fixed;
@@ -7,13 +8,41 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
-.GIFCardModal-main {
+.GIFCardModal-modal {
+  /* Center modal */
   position: fixed;
-  background: white;
-  width: 60%;
-  height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  /* Set size  */
+  width: 600px;
+  max-width: 100%;
+  height: 400px;
+  max-height: 100%;
+
+  /* styling */
+  background: white;
+  border-radius: 3px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.GIFCardModal-contents {
+  /* positioning */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+
+  /* layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 0px;
+}
+
+.GIFCardModal-gif {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
