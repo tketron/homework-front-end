@@ -24,8 +24,7 @@ export default class GIFCardContainer extends Component {
 
   render() {
     return (
-      <div>
-        I'm the GIFCard div
+      <div className="GIFCardContainer">
         {this.state.gifs.map(gif => (
           <GIFCard key={gif.id} gif={gif} />
         ))}
