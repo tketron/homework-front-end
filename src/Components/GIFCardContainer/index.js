@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import GIFCard from '../GIFCard';
+
 export default class GIFCardContainer extends Component {
   state = {
     loading: true,
@@ -23,11 +25,9 @@ export default class GIFCardContainer extends Component {
     return (
       <div>
         I'm the GIFCard div
-        <ul>
-          {this.state.gifs.map(gif => (
-            <li>{gif.title}</li>
-          ))}
-        </ul>
+        {this.state.gifs.map(gif => (
+          <GIFCard key={gif.id} gif={gif} />
+        ))}
       </div>
     );
   }
