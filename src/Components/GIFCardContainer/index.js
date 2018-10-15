@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import GIFCard from '../GIFCard';
+import './GIFCardContainer.css';
 
 export default class GIFCardContainer extends Component {
   state = {
