@@ -18,6 +18,15 @@ export default class GIFCardModal extends Component {
               <p>
                 {this.props.gif.title} uploaded by {this.props.gif.username}
               </p>
+              <p>
+                <a
+                  href={this.props.gif.bitly_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View on giphy
+                </a>
+              </p>
             </div>
           </div>
         </div>

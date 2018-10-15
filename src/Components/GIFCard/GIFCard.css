@@ -1,5 +1,6 @@
 .GIFCard {
   margin: 10px;
+  cursor: pointer;
 }
 
 .GIFCard-gif {
