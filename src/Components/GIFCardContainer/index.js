@@ -14,7 +14,8 @@ export default class GIFCardContainer extends Component {
     axios
       .get('http://api.giphy.com/v1/gifs/trending', {
         params: {
-          api_key: process.env.REACT_APP_GIPHY_KEY
+          api_key: process.env.REACT_APP_GIPHY_KEY,
+          accept: 'image/*'
         }
       })
       .then(data => {

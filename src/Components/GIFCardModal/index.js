@@ -5,11 +5,16 @@ import './GIFCardModal.css';
 export default class GIFCardModal extends Component {
   render() {
     return (
-      <div className="GIFCardModal">
+      <div className="GIFCardModal" onClick={this.props.onClick}>
         <div className="GIFCardModal-main">
-          <img src={this.props.gif.images.downsized.url} />
-          <p>{this.props.gif.title}</p>
-          <button onClick={this.props.onClick}>Close</button>
+          <div className="GIFCardModal-img-container">
+            <img src={this.props.gif.images.downsized.url} />
+          </div>
+          <div className="GIFCardModal-gif-details-container">
+            <p>
+              {this.props.gif.title} uploaded by {this.props.gif.username}
+            </p>
+          </div>
         </div>
       </div>
     );
