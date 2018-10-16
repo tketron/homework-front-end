@@ -11,7 +11,8 @@ export default class GIFCardContainer extends Component {
     this.state = {
       loading: true,
       queryPath: this.props.queryURL,
-      gifs: []
+      gifs: [],
+      offset: 0
     };
   }
 
@@ -27,11 +28,28 @@ export default class GIFCardContainer extends Component {
     }
   }
 
+  fetchMoreGIFs() {
+    axios
+      .get(`${this.state.queryPath}&offset=${this.state.offset}`, {})
+      .then(data => {
+        this.setState(prevState => ({
+          gifs: [...prevState.gifs, ...data.data.data],
+          loading: false,
+          offset: data.pagination.count + data.pagination.offset
+        }));
+      })
+      .catch(err => console.error(err));
+  }
+
   updateGIFs() {
     axios
       .get(this.state.queryPath, {})
       .then(data => {
-        this.setState({ gifs: data.data.data, loading: false });
+        this.setState({
+          gifs: data.data.data,
+          loading: false,
+          offset: data.pagination.count + data.pagination.offset
+        });
       })
       .catch(err => console.error(err));
   }
