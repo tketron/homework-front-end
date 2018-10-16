@@ -9,21 +9,35 @@ export default class GIFCardContainer extends Component {
     super(props);
     this.state = {
       loading: true,
+      queryPath: this.props.queryURL,
       gifs: []
     };
   }
 
   componentDidMount() {
+    console.log('mounted');
+    this.updateGIFs();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // console.log(this.state.queryPath);
+    if (prevState.queryPath !== this.props.queryURL) {
+      console.log('updated');
+
+      this.setState({ queryPath: this.props.queryURL }, () => {
+        this.updateGIFs();
+      });
+    }
+  }
+
+  updateGIFs() {
+    console.log('update GIFs called');
     axios
-      .get(this.props.queryURL, {
-        params: {
-          api_key: process.env.REACT_APP_GIPHY_KEY,
-          accept: 'image/*'
-        }
-      })
+      .get(this.state.queryPath, {})
       .then(data => {
         this.setState({ gifs: data.data.data });
-      });
+      })
+      .catch(err => console.error(err));
   }
 
   render() {

@@ -2,22 +2,31 @@ import React, { Component } from 'react';
 import './SearchBar.css';
 
 export default class SearchBar extends Component {
-  state = {
-    isSearch: true,
-    searchTerm: ''
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      isSearch: false,
+      searchTerm: ''
+    };
+  }
 
   handleSearchBarChange = e => {
-    this.setState({ searchTerm: e.target.value }, () => {
-      this.props.onSearchChange(this.state.isSearch, this.state.searchTerm);
-    });
+    this.setState({ searchTerm: e.target.value });
+  };
+
+  handleSearchSubmitClick = e => {
+    this.props.onSearchChange(this.state.isSearch, this.state.searchTerm);
   };
 
   handleSearchTypeToggle = () => {
-    this.setState(state => {
-      this.props.onSearchChange(!state.isSearch);
-      return { isSearch: !state.isSearch };
-    });
+    this.setState(
+      prevState => ({
+        isSearch: !prevState.isSearch
+      }),
+      () => {
+        this.props.onSearchChange(this.state.isSearch);
+      }
+    );
   };
 
   render() {
@@ -31,6 +40,7 @@ export default class SearchBar extends Component {
               value={this.state.searchTerm}
               onChange={this.handleSearchBarChange}
             />
+            <button onClick={this.handleSearchSubmitClick}>Search!</button>
             <button onClick={this.handleSearchTypeToggle}>
               Trending Instead?
             </button>
