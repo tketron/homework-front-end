@@ -1,0 +1,9 @@
+.SearchBarButton {
+  padding: 0.5em;
+  margin: 0em 1em;
+}
+
+.SearchBarButton:hover {
+  border: 1px solid black;
+  cursor: pointer;
+}

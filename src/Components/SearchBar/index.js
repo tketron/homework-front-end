@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+
+import SearchBarButton from './SearchBarButton';
+
 import './SearchBar.css';
 
 export default class SearchBar extends Component {
@@ -49,16 +52,18 @@ export default class SearchBar extends Component {
               value={this.state.searchTerm}
               onChange={this.handleSearchBarChange}
             />
-            <button onClick={this.handleSearchSubmitClick}>Search!</button>
-            <button onClick={this.handleSearchTypeToggle}>
+            <SearchBarButton onClick={this.handleSearchSubmitClick}>
+              Search!
+            </SearchBarButton>
+            <SearchBarButton onClick={this.handleSearchTypeToggle}>
               Trending Instead?
-            </button>
+            </SearchBarButton>
           </div>
         ) : (
           <div className="SearchBar-trending">
-            <button onClick={this.handleSearchTypeToggle}>
+            <SearchBarButton onClick={this.handleSearchTypeToggle}>
               Search instead
-            </button>
+            </SearchBarButton>
           </div>
         )}
       </div>
