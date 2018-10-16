@@ -1,9 +1,17 @@
 .SearchBarButton {
-  padding: 0.5em;
-  margin: 0em 1em;
+  padding: 0.8em;
+  margin: 0em 1.5em;
+
+  font-size: 1em;
+
+  color: #ffffff;
+  background-color: #4ba8e1;
+  border: none;
+
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .SearchBarButton:hover {
-  border: 1px solid black;
   cursor: pointer;
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
 }

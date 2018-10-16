@@ -18,6 +18,11 @@ export default class SearchBar extends Component {
     };
   }
 
+  // Autofocus text input
+  componentDidUpdate() {
+    this.searchBarInput && this.searchBarInput.focus();
+  }
+
   handleSearchBarChange = e => {
     this.setState({ searchTerm: e.target.value });
   };
@@ -47,22 +52,28 @@ export default class SearchBar extends Component {
         <div className="SearchBar-header-text">{this.state.headerMessage}</div>
         {this.state.isSearch ? (
           <div className="SearchBar-search">
-            <input
-              type="text"
-              value={this.state.searchTerm}
-              onChange={this.handleSearchBarChange}
-            />
-            <SearchBarButton onClick={this.handleSearchSubmitClick}>
-              Search!
-            </SearchBarButton>
-            <SearchBarButton onClick={this.handleSearchTypeToggle}>
-              Trending Instead?
-            </SearchBarButton>
+            <div>
+              <input
+                type="text"
+                id="SearchBar-search-input"
+                ref={el => (this.searchBarInput = el)}
+                value={this.state.searchTerm}
+                onChange={this.handleSearchBarChange}
+              />
+            </div>
+            <div>
+              <SearchBarButton onClick={this.handleSearchSubmitClick}>
+                Search!
+              </SearchBarButton>
+              <SearchBarButton onClick={this.handleSearchTypeToggle}>
+                View Trending GIFs
+              </SearchBarButton>
+            </div>
           </div>
         ) : (
           <div className="SearchBar-trending">
             <SearchBarButton onClick={this.handleSearchTypeToggle}>
-              Search instead
+              Search for GIFs
             </SearchBarButton>
           </div>
         )}

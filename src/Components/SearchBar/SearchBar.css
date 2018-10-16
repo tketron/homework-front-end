@@ -10,3 +10,24 @@
   display: inline-block;
   width: 100%;
 }
+
+.SearchBar-search {
+  display: flex;
+  flex-direction: column;
+}
+
+#SearchBar-search-input {
+  /* layout */
+  width: 80%;
+  height: 1.5em;
+  margin-bottom: 1em;
+
+  /* styling */
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 2em;
+}
+
+#SearchBar-search-input:focus {
+  outline: none;
+}
