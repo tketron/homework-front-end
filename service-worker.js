@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.2/workbox-sw.js");
 
 importScripts(
-  "/homework-gifeaze/precache-manifest.65a2d00abd7ca427c10d4254289e34a6.js"
+  "/homework-gifeaze/precache-manifest.9d576529f9f778a987caa78b41d14fab.js"
 );
 
 workbox.clientsClaim();
