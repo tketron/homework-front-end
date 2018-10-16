@@ -9,6 +9,7 @@
     "axios": "^0.18.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
+    "react-load-image": "^0.1.6",
     "react-loading": "^2.0.3"
   },
   "scripts": {
