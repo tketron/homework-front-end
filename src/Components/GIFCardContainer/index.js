@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ReactLoading from 'react-loading';
 
 import GIFCard from '../GIFCard';
 import './GIFCardContainer.css';
@@ -20,7 +21,7 @@ export default class GIFCardContainer extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.queryPath !== this.props.queryURL) {
-      this.setState({ queryPath: this.props.queryURL }, () => {
+      this.setState({ queryPath: this.props.queryURL, loading: true }, () => {
         this.updateGIFs();
       });
     }
@@ -30,7 +31,7 @@ export default class GIFCardContainer extends Component {
     axios
       .get(this.state.queryPath, {})
       .then(data => {
-        this.setState({ gifs: data.data.data });
+        this.setState({ gifs: data.data.data, loading: false });
       })
       .catch(err => console.error(err));
   }
@@ -41,6 +42,17 @@ export default class GIFCardContainer extends Component {
         {this.state.gifs.map(gif => (
           <GIFCard key={gif.id} gif={gif} />
         ))}
+        {this.state.loading && (
+          <div className="GIFCardContainer-loading">
+            <ReactLoading
+              id="GIFCardContainer-loading-animation"
+              type="bubbles"
+              color="#fff"
+              height="20%"
+              width="20%"
+            />
+          </div>
+        )}
       </div>
     );
   }
