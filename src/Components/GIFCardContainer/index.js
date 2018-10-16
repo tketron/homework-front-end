@@ -5,14 +5,17 @@ import GIFCard from '../GIFCard';
 import './GIFCardContainer.css';
 
 export default class GIFCardContainer extends Component {
-  state = {
-    loading: true,
-    gifs: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+      gifs: []
+    };
+  }
 
   componentDidMount() {
     axios
-      .get('http://api.giphy.com/v1/gifs/trending', {
+      .get(this.props.queryURL, {
         params: {
           api_key: process.env.REACT_APP_GIPHY_KEY,
           accept: 'image/*'
