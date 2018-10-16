@@ -22,6 +22,7 @@ export default class GIFCard extends Component {
       <div className="GIFCard" onClick={this.handleModalOpen}>
         <img
           src={this.props.gif.images.fixed_height.url}
+          alt={this.props.gif.title}
           className="GIFCard-gif"
         />
         {this.state.modalOpen && (

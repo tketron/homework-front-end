@@ -24,6 +24,7 @@ export default class GIFCardModal extends Component {
             <div className="GIFCardModal-gif-container">
               <img
                 src={this.props.gif.images.downsized.url}
+                alt={this.props.gif.title}
                 className="GIFCardModal-gif"
                 onLoad={this.handleImageLoad}
               />
