@@ -17,7 +17,9 @@ export default class App extends Component {
   handleQueryChange = (isSearch, query = '') => {
     let url;
     if (isSearch) {
-      url = `http://api.giphy.com/v1/gifs/search?q=${query}&`;
+      url = `http://api.giphy.com/v1/gifs/search?q=${encodeURIComponent(
+        query
+      )}&`;
     } else {
       url = `http://api.giphy.com/v1/gifs/trending?`;
     }
