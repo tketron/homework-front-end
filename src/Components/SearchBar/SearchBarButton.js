@@ -6,6 +6,8 @@ export default class SearchBarButton extends Component {
   render() {
     const { classNames, ...otherProps } = this.props;
 
-    return <button className={`SearchBarButton`} {...otherProps} />;
+    return (
+      <button className={`SearchBarButton ${classNames}`} {...otherProps} />
+    );
   }
 }

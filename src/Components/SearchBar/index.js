@@ -28,12 +28,14 @@ export default class SearchBar extends Component {
   };
 
   handleSearchSubmitClick = e => {
-    this.props.onSearchChange(this.state.isSearch, this.state.searchTerm);
+    this.state.searchTerm &&
+      this.props.onSearchChange(this.state.isSearch, this.state.searchTerm);
   };
 
   handleSearchTypeToggle = () => {
     this.setState(
       prevState => ({
+        searchTerm: '',
         isSearch: !prevState.isSearch,
         headerMessage:
           prevState.headerMessage === this._trendingText
@@ -62,7 +64,10 @@ export default class SearchBar extends Component {
               />
             </div>
             <div>
-              <SearchBarButton onClick={this.handleSearchSubmitClick}>
+              <SearchBarButton
+                onClick={this.handleSearchSubmitClick}
+                classNames={!this.state.searchTerm && 'disabled'}
+              >
                 Search!
               </SearchBarButton>
               <SearchBarButton onClick={this.handleSearchTypeToggle}>
