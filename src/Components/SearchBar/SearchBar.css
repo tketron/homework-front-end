@@ -1,0 +1,12 @@
+.SearchBar-header-text {
+  /* text-align: justify; */
+  font-size: 4.3vw;
+  font-weight: 700;
+  margin: 0px 2vw;
+}
+
+.SearchBar-header-text:after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+}

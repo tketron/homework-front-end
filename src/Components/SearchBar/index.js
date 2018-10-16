@@ -4,9 +4,14 @@ import './SearchBar.css';
 export default class SearchBar extends Component {
   constructor(props) {
     super(props);
+    // this._trendingText = 'T R E N D I N G G I F E A Z E';
+    // this._searchingText = 'S E A R C H F O R G I F S';
+    this._trendingText = 'Trending Gifeaze';
+    this._searchingText = 'Search for GIFs';
     this.state = {
       isSearch: false,
-      searchTerm: ''
+      searchTerm: '',
+      headerMessage: this._trendingText
     };
   }
 
@@ -21,7 +26,11 @@ export default class SearchBar extends Component {
   handleSearchTypeToggle = () => {
     this.setState(
       prevState => ({
-        isSearch: !prevState.isSearch
+        isSearch: !prevState.isSearch,
+        headerMessage:
+          prevState.headerMessage === this._trendingText
+            ? this._searchingText
+            : this._trendingText
       }),
       () => {
         this.props.onSearchChange(this.state.isSearch);
@@ -32,9 +41,9 @@ export default class SearchBar extends Component {
   render() {
     return (
       <div className="SearchBar">
+        <div className="SearchBar-header-text">{this.state.headerMessage}</div>
         {this.state.isSearch ? (
-          <div>
-            Search:{' '}
+          <div className="SearchBar-search">
             <input
               type="text"
               value={this.state.searchTerm}
@@ -46,8 +55,7 @@ export default class SearchBar extends Component {
             </button>
           </div>
         ) : (
-          <div>
-            Trending
+          <div className="SearchBar-trending">
             <button onClick={this.handleSearchTypeToggle}>
               Search instead
             </button>
