@@ -15,15 +15,11 @@ export default class GIFCardContainer extends Component {
   }
 
   componentDidMount() {
-    console.log('mounted');
     this.updateGIFs();
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // console.log(this.state.queryPath);
     if (prevState.queryPath !== this.props.queryURL) {
-      console.log('updated');
-
       this.setState({ queryPath: this.props.queryURL }, () => {
         this.updateGIFs();
       });
@@ -31,7 +27,6 @@ export default class GIFCardContainer extends Component {
   }
 
   updateGIFs() {
-    console.log('update GIFs called');
     axios
       .get(this.state.queryPath, {})
       .then(data => {

@@ -1,14 +1,13 @@
-.SearchBar-header-text {
-  /* text-align: justify; */
-  font-size: 4.3vw;
-  font-weight: 700;
-  margin: 0px 2vw;
+.SearchBar {
+  width: 100%;
+  margin: 0.1em;
 }
 
-.SearchBar-header-text:after {
-  content: '';
+.SearchBar-header-text {
   display: inline-block;
-  width: 100%;
+  font-size: 2.6em;
+  font-weight: 700;
+  margin: 0.2em;
 }
 
 .SearchBar-search {
