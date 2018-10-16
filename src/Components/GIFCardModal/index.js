@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ImageLoader from 'react-load-image';
 import ReactLoading from 'react-loading';
 
 import './GIFCardModal.css';
