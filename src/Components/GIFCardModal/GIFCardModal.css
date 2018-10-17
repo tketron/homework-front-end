@@ -55,15 +55,32 @@
   /* layout */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 10px 0px;
+}
+
+.GIFCardModal-close-container {
+  align-self: flex-end;
+}
+
+.GIFCardModal-close-X {
+  padding-right: 25px;
+  font-size: 3em;
+  font-weight: 100;
+  color: rgba(0, 0, 0, 0.24);
+}
+
+.GIFCardModal-close-X:hover {
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 
 .GIFCardModal-gif-container {
   position: relative;
   max-width: 400px;
   max-height: 400px;
+  margin: auto;
 }
 
 .GIFCardModal-gif {
@@ -85,10 +102,15 @@
   align-items: center;
 }
 
+.GIFCardModal-gif-details-container {
+  margin: auto;
+}
+
 .GIFCardModal-gif-details-text {
   font-size: 1.1em;
 }
 
 .GIFCardModal-gif-details-link a {
   text-decoration: none;
+  padding-bottom: 10px;
 }

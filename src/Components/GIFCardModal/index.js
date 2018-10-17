@@ -20,6 +20,9 @@ export default class GIFCardModal extends Component {
       <div className="GIFCardModal" onClick={this.props.onClick}>
         <div className="GIFCardModal-modal">
           <div className="GIFCardModal-contents">
+            <div className="GIFCardModal-close-container">
+              <span className="GIFCardModal-close-X">&times;</span>
+            </div>
             <div className="GIFCardModal-gif-container">
               <img
                 src={this.props.gif.images.downsized.url}
