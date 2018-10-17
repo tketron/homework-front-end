@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import uuidv1 from 'uuid/v1';
+
 import './App.css';
 
 import SearchBar from '../SearchBar';
@@ -19,12 +21,14 @@ export default class App extends Component {
     if (isSearch) {
       url = `https://api.giphy.com/v1/gifs/search?q=${encodeURIComponent(
         query
-      )}&`;
+      )}&api_key=${process.env.REACT_APP_GIPHY_KEY}`;
     } else {
-      url = `https://api.giphy.com/v1/gifs/trending?`;
+      url = `https://api.giphy.com/v1/gifs/trending?api_key=${
+        process.env.REACT_APP_GIPHY_KEY
+      }`;
     }
     this.setState({
-      queryURL: `${url}api_key=${process.env.REACT_APP_GIPHY_KEY}`
+      queryURL: url
     });
   };
 
@@ -32,7 +36,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <SearchBar onSearchChange={this.handleQueryChange} />
-        <GIFCardContainer queryURL={this.state.queryURL} />
+        <GIFCardContainer queryURL={this.state.queryURL} key={uuidv1()} />
       </div>
     );
   }

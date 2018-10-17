@@ -4,10 +4,11 @@ import './SearchBarButton.css';
 
 export default class SearchBarButton extends Component {
   render() {
-    const { classNames, ...otherProps } = this.props;
+    const { enabled, ...otherProps } = this.props;
+    const buttonClass = enabled
+      ? 'SearchBarButton'
+      : 'SearchBarButton disabled';
 
-    return (
-      <button className={`SearchBarButton ${classNames}`} {...otherProps} />
-    );
+    return <button className={buttonClass} {...otherProps} />;
   }
 }

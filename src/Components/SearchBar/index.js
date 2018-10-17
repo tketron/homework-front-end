@@ -20,14 +20,16 @@ export default class SearchBar extends Component {
 
   // Autofocus text input
   componentDidUpdate() {
+    this.setState({ searchTerm: '' });
     this.searchBarInput && this.searchBarInput.focus();
   }
 
-  handleSearchBarChange = e => {
+  handleSearchInputChange = e => {
     this.setState({ searchTerm: e.target.value });
   };
 
   handleSearchSubmitClick = e => {
+    // e.stopPropagation();
     this.state.searchTerm &&
       this.props.onSearchChange(this.state.isSearch, this.state.searchTerm);
   };
@@ -35,7 +37,7 @@ export default class SearchBar extends Component {
   handleSearchTypeToggle = () => {
     this.setState(
       prevState => ({
-        searchTerm: '',
+        // searchTerm: '',
         isSearch: !prevState.isSearch,
         headerMessage:
           prevState.headerMessage === this._trendingText
@@ -60,24 +62,30 @@ export default class SearchBar extends Component {
                 id="SearchBar-search-input"
                 ref={el => (this.searchBarInput = el)}
                 value={this.state.searchTerm}
-                onChange={this.handleSearchBarChange}
+                onChange={this.handleSearchInputChange}
               />
             </div>
             <div>
               <SearchBarButton
                 onClick={this.handleSearchSubmitClick}
-                classNames={!this.state.searchTerm && 'disabled'}
+                enabled={this.state.searchTerm ? true : false}
               >
                 Search!
               </SearchBarButton>
-              <SearchBarButton onClick={this.handleSearchTypeToggle}>
+              <SearchBarButton
+                onClick={this.handleSearchTypeToggle}
+                enabled={true}
+              >
                 View Trending GIFs
               </SearchBarButton>
             </div>
           </div>
         ) : (
           <div className="SearchBar-trending">
-            <SearchBarButton onClick={this.handleSearchTypeToggle}>
+            <SearchBarButton
+              onClick={this.handleSearchTypeToggle}
+              enabled={true}
+            >
               Search for GIFs
             </SearchBarButton>
           </div>

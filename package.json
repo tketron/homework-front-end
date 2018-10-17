@@ -10,7 +10,9 @@
     "gh-pages": "^2.0.1",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
-    "react-loading": "^2.0.3"
+    "react-infinite-scroller": "^1.2.2",
+    "react-loading": "^2.0.3",
+    "uuid": "^3.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
