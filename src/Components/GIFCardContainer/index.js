@@ -13,7 +13,8 @@ export default class GIFCardContainer extends Component {
       loading: true,
       queryPath: this.props.queryURL,
       gifs: [],
-      offset: 0
+      offset: 0,
+      remaining: 1
     };
   }
 
@@ -75,7 +76,11 @@ export default class GIFCardContainer extends Component {
         this.setState(prevState => ({
           gifs: [...prevState.gifs, ...data.data.data],
           loading: false,
-          offset: data.data.pagination.count + data.data.pagination.offset + 1
+          offset: data.data.pagination.count + data.data.pagination.offset + 1,
+          remaining:
+            data.data.pagination.total_count -
+            data.data.pagination.count -
+            data.data.pagination.offset
         }));
       })
       .catch(err => console.error(err));
@@ -104,7 +109,7 @@ export default class GIFCardContainer extends Component {
       <InfiniteScroll
         // pageStart={0}
         loadMore={this.fetchMoreGIFs.bind(this)}
-        hasMore={true}
+        hasMore={this.state.remaining > 0}
         initialLoad={true}
         loader={
           <ReactLoading

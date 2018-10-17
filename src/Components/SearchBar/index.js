@@ -20,7 +20,6 @@ export default class SearchBar extends Component {
 
   // Autofocus text input
   componentDidUpdate() {
-    this.setState({ searchTerm: '' });
     this.searchBarInput && this.searchBarInput.focus();
   }
 
@@ -30,14 +29,15 @@ export default class SearchBar extends Component {
 
   handleSearchSubmitClick = e => {
     // e.stopPropagation();
-    this.state.searchTerm &&
+    if (this.state.searchTerm.length > 0) {
       this.props.onSearchChange(this.state.isSearch, this.state.searchTerm);
+    }
   };
 
   handleSearchTypeToggle = () => {
     this.setState(
       prevState => ({
-        // searchTerm: '',
+        searchTerm: '',
         isSearch: !prevState.isSearch,
         headerMessage:
           prevState.headerMessage === this._trendingText
@@ -45,6 +45,7 @@ export default class SearchBar extends Component {
             : this._trendingText
       }),
       () => {
+        console.log('called');
         this.props.onSearchChange(this.state.isSearch);
       }
     );

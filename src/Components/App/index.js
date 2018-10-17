@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import uuidv1 from 'uuid/v1';
+import uuidv3 from 'uuid/v1';
 
 import './App.css';
 
@@ -36,7 +36,10 @@ export default class App extends Component {
     return (
       <div className="App">
         <SearchBar onSearchChange={this.handleQueryChange} />
-        <GIFCardContainer queryURL={this.state.queryURL} key={uuidv1()} />
+        <GIFCardContainer
+          queryURL={this.state.queryURL}
+          key={uuidv3(this.state.queryURL, uuidv3.URL)}
+        />
       </div>
     );
   }
