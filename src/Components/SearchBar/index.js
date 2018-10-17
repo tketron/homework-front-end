@@ -42,7 +42,6 @@ export default class SearchBar extends Component {
             : this._trendingText
       }),
       () => {
-        console.log('called');
         this.props.onSearchChange(this.state.isSearch);
       }
     );
@@ -61,6 +60,9 @@ export default class SearchBar extends Component {
                 ref={el => (this.searchBarInput = el)}
                 value={this.state.searchTerm}
                 onChange={this.handleSearchInputChange}
+                onKeyPress={e => {
+                  if (e.key === 'Enter') this.handleSearchSubmitClick();
+                }}
               />
             </div>
             <div>

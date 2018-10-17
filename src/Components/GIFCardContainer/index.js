@@ -19,7 +19,7 @@ export default class GIFCardContainer extends Component {
   }
 
   /**
-   *
+   * Query API with specified URL and offset, updating state with new data, offset, and remaining items.
    */
   fetchMoreGIFs() {
     axios
@@ -57,11 +57,7 @@ export default class GIFCardContainer extends Component {
           />
         }
       >
-        <div className="GIFCardContainer">
-          {this.state.gifs.map(gif => (
-            <GIFCard key={gif.id} gif={gif} />
-          ))}
-        </div>
+        <div className="GIFCardContainer">{gifs}</div>
       </InfiniteScroll>
     );
   }

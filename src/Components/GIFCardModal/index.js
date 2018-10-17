@@ -12,7 +12,6 @@ export default class GIFCardModal extends Component {
   }
 
   handleImageLoad = () => {
-    console.log('loaded');
     this.setState({ loading: false });
   };
 
