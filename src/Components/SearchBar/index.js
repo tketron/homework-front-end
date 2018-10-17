@@ -7,8 +7,6 @@ import './SearchBar.css';
 export default class SearchBar extends Component {
   constructor(props) {
     super(props);
-    // this._trendingText = 'T R E N D I N G G I F E A Z E';
-    // this._searchingText = 'S E A R C H F O R G I F S';
     this._trendingText = 'Trending Gifeaze';
     this._searchingText = 'Search for GIFs';
     this.state = {
@@ -28,7 +26,6 @@ export default class SearchBar extends Component {
   };
 
   handleSearchSubmitClick = e => {
-    // e.stopPropagation();
     if (this.state.searchTerm.length > 0) {
       this.props.onSearchChange(this.state.isSearch, this.state.searchTerm);
     }
