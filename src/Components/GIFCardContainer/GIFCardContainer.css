@@ -5,16 +5,3 @@
   justify-content: center;
   position: relative;
 }
-
-.GIFCardContainer-loading {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(100, 100, 100, 0.5);
-}
